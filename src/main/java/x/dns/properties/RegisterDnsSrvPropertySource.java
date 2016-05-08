@@ -1,10 +1,12 @@
-package y;
+package x.dns.properties;
 
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 
-@Component
+/**
+ * Register
+ */
 public class RegisterDnsSrvPropertySource implements ApplicationContextInitializer {
 
     public RegisterDnsSrvPropertySource() {

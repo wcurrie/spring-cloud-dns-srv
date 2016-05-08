@@ -1,4 +1,4 @@
-package y;
+package x.dns.properties;
 
 import com.spotify.dns.DnsSrvResolver;
 import com.spotify.dns.DnsSrvResolvers;
@@ -9,6 +9,9 @@ import org.xbill.DNS.SimpleResolver;
 import java.net.UnknownHostException;
 import java.util.stream.Collectors;
 
+/**
+ * Resolve a property place holder like ${web.service.local} by looking up DNS SRV records
+ */
 public class DnsSrvRecordPropertySource extends EnumerablePropertySource {
 
     private final DnsSrvResolver resolver;
@@ -30,11 +33,15 @@ public class DnsSrvRecordPropertySource extends EnumerablePropertySource {
     }
 
     public Object getProperty(String name) {
-        System.out.println("resolving " + name);
-        return resolver.resolve(name)
-                .stream()
-                .map(lookupResult -> "https://" + lookupResult.host() + ":" + lookupResult.port())
-                .collect(Collectors.joining(","));
+        if (name.endsWith("service.local")) {
+            System.out.println("resolving " + name);
+            return resolver.resolve(name)
+                    .stream()
+                    .map(lookupResult -> "https://" + lookupResult.host() + ":" + lookupResult.port())
+                    .collect(Collectors.joining(","));
+        } else {
+            return null;
+        }
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,2 @@
+#org.springframework.context.ApplicationContextInitializer=\
+#x.dns.properties.RegisterDnsSrvPropertySource
