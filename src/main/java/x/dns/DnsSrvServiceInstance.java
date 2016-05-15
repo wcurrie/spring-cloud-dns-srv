@@ -3,6 +3,7 @@ package x.dns;
 import org.springframework.cloud.client.ServiceInstance;
 
 import java.net.URI;
+import java.util.Map;
 
 import static java.lang.String.format;
 
@@ -43,6 +44,11 @@ public class DnsSrvServiceInstance implements ServiceInstance {
     @Override
     public URI getUri() {
         return field;
+    }
+
+    @Override
+    public Map<String, String> getMetadata() {
+        return null;
     }
 
     @Override
