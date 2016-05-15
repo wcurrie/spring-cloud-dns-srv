@@ -11,11 +11,11 @@ import org.xbill.DNS.SimpleResolver;
 import java.net.URI;
 import java.net.UnknownHostException;
 
-public class DnsSrvLoadBalancerClient implements LoadBalancerClient {
+public class SimpleDnsSrvLoadBalancerClient implements LoadBalancerClient {
 
     private final DnsSrvResolver resolver;
 
-    public DnsSrvLoadBalancerClient() {
+    public SimpleDnsSrvLoadBalancerClient() {
         resolver = DnsSrvResolvers.newBuilder().build();
         try {
             SimpleResolver defaultResolver = new SimpleResolver("localhost");
